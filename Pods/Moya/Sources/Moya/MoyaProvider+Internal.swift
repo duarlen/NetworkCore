@@ -27,6 +27,11 @@ public extension MoyaProvider {
 
         // Allow plugins to modify response
         let pluginsWithCompletion: Moya.Completion = { result in
+            self.plugins.reduce(into: result) { (result, a) in
+                print(result, a)
+                a.process(result, target: target)
+            }
+            
             let processedResult = self.plugins.reduce(result) { $1.process($0, target: target) }
             completion(processedResult)
         }

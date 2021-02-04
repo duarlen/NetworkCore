@@ -17,14 +17,6 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        _ = provider.rx.request(.test111).subscribe(onSuccess: { (repose) in
-//            let data = repose.data
-//            let string = try? JSONSerialization.jsonObject(with: data, options: [])
-//            print("成功信息", repose, string)
-//        }, onError: { (error) in
-//            print("错误信息", error.localizedDescription)
-//        })
-        
         _ = provider.rx.request(.test111).mapEmptyDataModel().subscribe { (_) in
 
         } onError: { (error) in
